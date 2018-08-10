@@ -198,7 +198,7 @@ function! RotateColorTheme()
 endfunction
 " }}}
 
-"{{{ Paste Toggle
+"{{{ Paste and Mouse Toggle
 let paste_mode = 0 " 0 = normal, 1 = paste
 
 func! Paste_on_off()
@@ -211,6 +211,19 @@ func! Paste_on_off()
    endif
    return
 endfunc
+
+
+function! ToggleMouse()
+    " check if mouse is enabled
+    if &mouse == 'a'
+        " disable mouse
+        set mouse=
+    else
+        " enable mouse everywhere
+        set mouse=a
+    endif
+endfunc
+
 "}}}
 
 
@@ -247,8 +260,10 @@ nnoremap <silent> <F8> :execute RotateColorTheme()<CR>
 nnoremap <silent> <F7> mzgg=G`z
 
 " Paste Mode!  Dang! <F10>
-nnoremap <silent> <F10> :call Paste_on_off()<CR>
 set pastetoggle=<F10>
+
+" Toggle Moust
+nnoremap <silent><F9> :call ToggleMouse()<CR>
 
 " Edit vimrc \ev
 nnoremap <silent> <Leader>ev :tabnew<CR>:e ~/.vimrc<CR>
@@ -326,6 +341,7 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 filetype plugin indent on
 syntax on
 set ttymouse=sgr
+
 if !exists('g:airline_symbols')
   let g:airline_symbols = {}
 endif
@@ -336,7 +352,7 @@ let g:airline_right_alt_sep = ''
 let g:airline_symbols.branch = ''
 let g:airline_symbols.readonly = ''
 let g:airline_symbols.linenr = '☰'
-let g:airline_symbols.maxlinenr = ' '
+let g:airline_symbols.maxlinenr = ''
 let g:airline_symbols.space = "\ua0"
 
 let g:jsx_ext_required = 0

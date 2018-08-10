@@ -73,7 +73,9 @@ source $ZSH/oh-my-zsh.sh
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
-# export LANG=en_US.UTF-8
+export LANG=en_US.UTF-8
+
+export EDITOR='vim'
 
 # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then
@@ -99,3 +101,6 @@ source $ZSH/oh-my-zsh.sh
 export PLASMA_USE_QT_SCALING=1
 export MAKEFLAGS='-j9'
 export DEFAULT_USER=hetianh2
+
+#this must be the last thing
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
